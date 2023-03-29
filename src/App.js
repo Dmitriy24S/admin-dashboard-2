@@ -2,7 +2,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import React, { useEffect } from 'react'
 import { FiSettings } from 'react-icons/fi'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Footer, Navbar, Sidebar, ThemeSettings } from './components'
+import { Footer, Sidebar, ThemeSettings, Topbar } from './components'
 import {
   Area,
   Bar,
@@ -59,7 +59,7 @@ function App() {
             }`}
           >
             <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
-              <Navbar />
+              <Topbar />
             </div>
           </div>
           {/* ROUTES */}
