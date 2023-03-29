@@ -2,7 +2,6 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import React, { useEffect } from 'react'
 import { FiSettings } from 'react-icons/fi'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import './App.css'
 import { Footer, Navbar, Sidebar, ThemeSettings } from './components'
 import {
   Area,
@@ -23,21 +22,29 @@ import {
   Stacked,
 } from './pages'
 
+import './App.css'
+import { useStateContext } from './context/ContextProvider'
+
 function App() {
-  const activeMenu = true
+  // const activeMenu = true
+  const { isSidebarOpen } = useStateContext()
 
   return (
     <div className='App'>
       <BrowserRouter>
         <div className='flex relative dark:bg-main-dark-bg'>
           <div className='fixed right-4 bottom-4 z-50'>
-            <TooltipComponent content='Settings' position='TopCenter'>
+            <TooltipComponent
+              content='Settings'
+              position='TopCenter'
+              showTipPointer={false}
+            >
               <button aria-label='Settings' className='text-3xl rounded-full'>
                 <FiSettings />
               </button>
             </TooltipComponent>
           </div>
-          {activeMenu ? (
+          {isSidebarOpen ? (
             <div className='w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white '>
               <Sidebar />
             </div>
@@ -48,7 +55,7 @@ function App() {
           )}
           <div
             className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${
-              activeMenu ? 'md:ml-72 ' : 'flex-2'
+              isSidebarOpen ? 'md:ml-72 ' : 'flex-2'
             }`}
           >
             <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
@@ -59,7 +66,7 @@ function App() {
           <div>
             <Routes>
               {/* Dashboard */}
-              <Route path='/' element='ECommerce' />
+              <Route path='/' element={<Ecommerce />} />
               <Route path='/ecommerce' element={<Ecommerce />} />
               {/* Pages */}
               <Route path='/orders' element={<Orders />} />
