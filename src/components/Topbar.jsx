@@ -87,7 +87,7 @@ const Topbar = () => {
           position='BottomCenter'
           showTipPointer={false}
         >
-          <div
+          <button
             className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg'
             onClick={() => toggleState('isUserProfileOpen')}
           >
@@ -97,7 +97,7 @@ const Topbar = () => {
               <span className='text-gray-700 font-bold ml-1 text-14'>David</span>
             </p>
             <MdKeyboardArrowDown className='text-gray-400 text-14' />
-          </div>
+          </button>
         </TooltipComponent>
         {topbarItemsState.isCartOpen && <Cart />}
         {topbarItemsState.isChatOpen && <Chat />}

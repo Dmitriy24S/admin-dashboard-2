@@ -54,6 +54,12 @@
   border: none;
 }
 
+/* show focus outline */
+.e-control:focus,
+.e-control *:focus {
+  outline: revert;
+}
+
 /* App.css - stock */
 
 /* .App {
