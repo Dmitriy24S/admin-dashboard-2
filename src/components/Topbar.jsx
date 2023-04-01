@@ -26,8 +26,16 @@ const TopbarButton = ({ title, customFunc, icon, color, dotColor }) => (
 )
 
 const Topbar = () => {
-  const { setIsSidebarOpen, topbarItemsState, toggleState, screenSize, setScreenSize } =
-    useStateContext()
+  const {
+    setIsSidebarOpen,
+    topbarItemsState,
+    toggleState,
+    screenSize,
+    setScreenSize,
+    currentColor,
+  } = useStateContext()
+
+  console.log('Topbar topbarItemsState:', topbarItemsState)
 
   // Check window size
   useEffect(() => {
@@ -51,12 +59,13 @@ const Topbar = () => {
   }, [screenSize])
 
   return (
-    <div className='flex justify-between p-2 md:mx-6 relative'>
+    <div className='flex justify-between p-2 md:mx-6 relative dark:text-gray-200'>
       <TopbarButton
         title='Menu'
         customFunc={() => setIsSidebarOpen((prev) => !prev)}
-        color='blue'
-        dotColor='red'
+        // color='blue'
+        // color={currentColor}
+        // dotColor='red'
         icon={<AiOutlineMenu />}
       />
       <div className='flex'>
@@ -64,22 +73,25 @@ const Topbar = () => {
           title='Cart'
           // customFunc={() => setActiveMenu((prev) => !prev)}
           customFunc={() => toggleState('isCartOpen')}
-          color='blue'
-          dotColor='red'
+          // color='blue'
+          // dotColor='red'
+          dotColor={currentColor}
           icon={<FiShoppingCart />}
         />
         <TopbarButton
           title='Chat'
           customFunc={() => toggleState('isChatOpen')}
-          color='blue'
-          dotColor='#03C9D7'
+          // color='blue'
+          // dotColor='#03C9D7'
+          dotColor={currentColor}
           icon={<BsChatLeft />}
         />
         <TopbarButton
           title='Notification'
           customFunc={() => toggleState('isNotificationOpen')}
-          color='blue'
-          dotColor='#03C9D7'
+          // color='blue'
+          // dotColor='#03C9D7'
+          dotColor={currentColor}
           icon={<RiNotification3Line />}
         />
         <TooltipComponent
@@ -88,13 +100,15 @@ const Topbar = () => {
           showTipPointer={false}
         >
           <button
-            className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg'
+            className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg dark:hover:bg-secondary-dark-bg'
             onClick={() => toggleState('isUserProfileOpen')}
           >
             <img src={avatarImg} alt='user' className='rounded-full w-8 h-8' />
             <p>
               <span className='text-gray-400 text-14'>Hi, </span>
-              <span className='text-gray-700 font-bold ml-1 text-14'>David</span>
+              <span className='text-gray-700 font-bold ml-1 text-14 dark:text-gray-100'>
+                David
+              </span>
             </p>
             <MdKeyboardArrowDown className='text-gray-400 text-14' />
           </button>

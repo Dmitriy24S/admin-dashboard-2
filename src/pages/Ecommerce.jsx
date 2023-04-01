@@ -10,9 +10,10 @@ const Ecommerce = () => {
   return (
     <div className='mt-12'>
       {/* <div className='flex flex-wrap lg:flex-nowrap justify-center'> */}
-      <div className='flex flex-wrap justify-center'>
+      <div className='flex flex-wrap justify-center overflow-hidden'>
         {/* HERO */}
-        <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center'>
+        {/* <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center'> */}
+        <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center'>
           <div className='flex justify-between items-center'>
             <div>
               <p className='font-bold text-gray-400'>Earnings</p>
@@ -30,11 +31,12 @@ const Ecommerce = () => {
           </div>
         </div>
         {/* CARDS */}
-        <div className='flex m-3 flex-wrap justify-center gap-1 items-center'>
+        {/* <div className='flex m-3 flex-wrap justify-center gap-1 items-center'> */}
+        <div className='flex m-3 flex-wrap gap-4 justify-center w-full'>
           {earningData.map((item) => (
             <div
               key={item.title}
-              className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 p-4 pt-9 rounded-2xl'
+              className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 p-4 pt-9 rounded-2xl min-w-[190px]'
             >
               <button
                 type='button'
@@ -57,12 +59,13 @@ const Ecommerce = () => {
           ))}
         </div>
         {/* CARDS 2 */}
-        <div className='flex gap-10 flex-wrap justify-center'>
-          <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-780 m-3 p-4'>
+        <div className='flex gap-10 flex-wrap justify-center w-full'>
+          {/* <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-780 m-3 p-4'> */}
+          <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-4 w-full m-3'>
             <div className='flex justify-between'>
               <p className='font-semibold text-xl'>Revenue Updates</p>
               <div className='flex gap-4 items-center'>
-                <p className='flex items-center gap-2 text-gray-600 hover:drop-shadow-xl'>
+                <p className='flex items-center gap-2 text-gray-600 hover:drop-shadow-xl dark:text-gray-300'>
                   <span>
                     <GoPrimitiveDot />
                   </span>
@@ -95,7 +98,7 @@ const Ecommerce = () => {
                   <p>
                     <span className='text-3xl font-semibold'>$48,438</span>
                   </p>
-                  <p className='mt-1 text-gray-500'>Expense</p>
+                  <p className='mt-1 text-gray-500 '>Expense</p>
                 </div>
                 {/* CHART */}
                 <div className='mt-5'>

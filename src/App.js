@@ -2,7 +2,9 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups'
 import React, { useEffect } from 'react'
 import { FiSettings } from 'react-icons/fi'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import './App.css'
 import { Footer, Sidebar, ThemeSettings, Topbar } from './components'
+import { useStateContext } from './context/ContextProvider'
 import {
   Area,
   Bar,
@@ -22,25 +24,26 @@ import {
   Stacked,
 } from './pages'
 
-import './App.css'
-import { useStateContext } from './context/ContextProvider'
-
 function App() {
   // const activeMenu = true
-  const { isSidebarOpen } = useStateContext()
+  const { isSidebarOpen, themeSettings, setThemeSettings, currentMode } =
+    useStateContext()
 
   return (
-    <div className='App'>
+    <div className={currentMode === 'Dark' ? 'dark' : ''}>
       <BrowserRouter>
         <div className='flex relative dark:bg-main-dark-bg'>
-          {/* Theme Settings Button */}
           <div className='fixed right-4 bottom-4 z-50'>
             <TooltipComponent
               content='Settings'
               position='TopCenter'
               showTipPointer={false}
             >
-              <button aria-label='Settings' className='text-3xl rounded-full'>
+              <button
+                aria-label='Settings'
+                className='text-3xl rounded-full dark:text-gray-300'
+                onClick={() => setThemeSettings(true)}
+              >
                 <FiSettings />
               </button>
             </TooltipComponent>
@@ -66,7 +69,8 @@ function App() {
             </div>
             {/* </div> */}
             {/* ROUTES */}
-            <div>
+            <div className='dark:bg-main-dark-bg p-4 pt-16 md:pt-10 min-h-screen'>
+              {themeSettings && <ThemeSettings />}
               <Routes>
                 {/* Dashboard */}
                 <Route path='/' element={<Ecommerce />} />
@@ -76,9 +80,9 @@ function App() {
                 <Route path='/employees' element={<Employees />} />
                 <Route path='/customers' element={<Customers />} />
                 {/* Apps */}
+                <Route path='/calendar' element={<Calendar />} />
                 <Route path='/kanban' element={<Kanban />} />
                 <Route path='/editor' element={<Editor />} />
-                <Route path='/calendar' element={<Calendar />} />
                 <Route path='/color-picker' element={<ColorPicker />} />
                 {/* Charts */}
                 <Route path='/line' element={<Line />} />

@@ -41,6 +41,7 @@
   min-width: 300px;
   max-width: 600px;
   background-color: #008000;
+  border-radius: 40px;
 }
 
 .e-input-group:not(.e-float-icon-left),
@@ -58,6 +59,11 @@
 .e-control:focus,
 .e-control *:focus {
   outline: revert;
+}
+
+div.e-control {
+  /* border-radius: 8px; */
+  /* overflow: hidden; */
 }
 
 /* App.css - stock */

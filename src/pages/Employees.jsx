@@ -19,7 +19,10 @@ import { contextMenuItems, employeesData, employeesGrid } from '../data/dummyDat
 
 const Employees = () => {
   return (
-    <div className='m-10 mt-16 md:mt-10 p-4 md:p-10 bg-white rounded-3xl'>
+    <div
+      className='m-10
+  mt-16 md:mt-10 p-4 md:p-10 bg-white rounded-3xl overflow-auto dark:bg-secondary-dark-bg'
+    >
       <Header category='Page' title='Employees' />
       <GridComponent
         dataSource={employeesData}
@@ -27,6 +30,11 @@ const Employees = () => {
         allowSorting
         toolbar={['Search']}
         width='auto'
+        // borderRadius='8px'
+        style={{
+          borderRadius: '8px',
+          overflow: 'hidden',
+        }}
       >
         <ColumnsDirective>
           {employeesGrid.map((item, index) => (

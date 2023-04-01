@@ -18,9 +18,15 @@ import { scheduleData } from '../data/dummyData'
 
 const Calendar = () => {
   return (
-    <div className='m-10 mt-16 md:mt-10 p-10 bg-white rounded-3xl'>
+    <div
+      className='m-10
+  mt-16 md:mt-10 p-4 md:p-10 bg-white rounded-3xl overflow-auto dark:bg-secondary-dark-bg'
+    >
       <Header category='App' title='Calendar' />
       <ScheduleComponent
+        style={{
+          borderRadius: '8px',
+        }}
         height='650px'
         eventSettings={{
           dataSource: scheduleData,

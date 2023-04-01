@@ -21,7 +21,7 @@ const Sidebar = () => {
   const activeLink =
     'flex items-center gap-4 pl-4 pt-3 pb-2.5 rounded-lg bg-light-gray text-md m-2'
   const normalLink =
-    'flex items-center gap-4 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2'
+    'flex items-center gap-4 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 hover:bg-light-gray m-2 dark:hover:bg-main-dark-bg'
 
   return (
     <div className='px-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10'>
@@ -45,7 +45,7 @@ const Sidebar = () => {
               <button
                 type='button'
                 onClick={() => setIsSidebarOpen((prev) => !prev)}
-                className='text-xl rounded-full p-1.5 hover:bg-light-gray mt-3.5 block md:hidden'
+                className='text-xl rounded-full p-1.5 hover:bg-light-gray mt-3.5 block md:hidden text-[#99abb4] dark:hover:bg-main-dark-bg'
               >
                 <AiOutlineClose />
               </button>

@@ -13,9 +13,17 @@ import { EditorData } from '../data/dummyData'
 
 const Editor = () => {
   return (
-    <div className='m-10 mt-16 md:mt-10 p-10 bg-white rounded-3xl overflow-scroll'>
+    <div
+      className='m-10
+mt-16 md:mt-10 p-4 md:p-10 bg-white rounded-3xl overflow-auto dark:bg-secondary-dark-bg'
+    >
       <Header category='App' title='Editor' />
-      <RichTextEditorComponent>
+      <RichTextEditorComponent
+        style={{
+          borderRadius: '8px',
+          overflow: 'hidden',
+        }}
+      >
         <EditorData />
         <Inject services={[HtmlEditor, Image, Link, QuickToolbar, Toolbar]} />
       </RichTextEditorComponent>

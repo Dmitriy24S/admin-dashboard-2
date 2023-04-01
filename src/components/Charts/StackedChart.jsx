@@ -17,6 +17,9 @@ import {
 const StackedChart = ({ width, height }) => {
   return (
     <ChartComponent
+      style={{
+        borderRadius: '8px',
+      }}
       width={width}
       height={height}
       // id='stack chart' // ! no tooltip
