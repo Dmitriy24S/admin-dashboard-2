@@ -7,7 +7,11 @@ import { MdKeyboardArrowDown } from 'react-icons/md'
 import { RiNotification3Line } from 'react-icons/ri'
 
 import { Cart, Chat, Notification, UserProfile } from '.'
-import { useStateContext } from '../context/ContextProvider'
+import {
+  useSidebarContext,
+  useStateContext,
+  useTopbarContext,
+} from '../context/ContextProvider'
 import avatarImg from '../data/avatar.jpg'
 
 const TopbarButton = ({ title, customFunc, icon, color, dotColor }) => (
@@ -26,14 +30,9 @@ const TopbarButton = ({ title, customFunc, icon, color, dotColor }) => (
 )
 
 const Topbar = () => {
-  const {
-    setIsSidebarOpen,
-    topbarItemsState,
-    toggleState,
-    screenSize,
-    setScreenSize,
-    currentColor,
-  } = useStateContext()
+  const { screenSize, setScreenSize, currentColor } = useStateContext()
+  const { setIsSidebarOpen } = useSidebarContext()
+  const { topbarItemsState, toggleState } = useTopbarContext()
 
   console.log('Topbar topbarItemsState:', topbarItemsState)
 
@@ -100,6 +99,7 @@ const Topbar = () => {
           showTipPointer={false}
         >
           <button
+            type='button'
             className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg dark:hover:bg-secondary-dark-bg'
             onClick={() => toggleState('isUserProfileOpen')}
           >
@@ -122,4 +122,4 @@ const Topbar = () => {
   )
 }
 
-export default Topbar
+export default React.memo(Topbar)

@@ -15,9 +15,11 @@ import {
   Sort,
   Toolbar,
 } from '@syncfusion/ej2-react-grids'
+import React from 'react'
 import { Header } from '../components'
 import { contextMenuItems, customersData, customersGrid } from '../data/dummyData'
 
+// const Customers = React.memo(() => {
 const Customers = () => {
   return (
     <div

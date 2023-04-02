@@ -1,6 +1,8 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useCallback, useContext, useMemo, useState } from 'react'
 
 const StateContext = createContext()
+const SidebarContext = createContext()
+const TopbarContext = createContext()
 
 const initialState = {
   isChatOpen: false,
@@ -16,71 +18,88 @@ function getStoredValue(key, defaultValue) {
   return storedValue ? storedValue : defaultValue
 }
 
-export const ContextProvider = ({ children }) => {
+export const StateContextProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+
   const [topbarItemsState, setTopbarItemsState] = useState(initialState)
   const [screenSize, setScreenSize] = useState(undefined)
-  // const [currentColor, setCurrentColor] = useState('#1A97F5')
   const [currentColor, setCurrentColor] = useState(
     getStoredValue('dashboardColorMode', '#1A97F5')
-  )
-  // const [currentMode, setCurrentMode] = useState('Light')
+  ) // useState('#1A97F5')
   const [currentMode, setCurrentMode] = useState(
     getStoredValue('dashboardThemeMode', 'Light')
   )
-  const [themeSettings, setThemeSettings] = useState(false) // sidebar open/close?
 
-  const setMode = (value) => {
+  // ! The 'setColor' function makes the dependencies of useMemo Hook (at line 79) change on every render. Move it inside the useMemo callback. Alternatively, wrap the definition of 'setColor' in its own useCallback() Hook.eslintreact-hooks/exhaustive-deps
+  const setMode = useCallback((value) => {
     console.log('set mode:', value)
     setCurrentMode(value)
     localStorage.setItem('dashboardThemeMode', value)
-  }
+  }, [])
 
-  const setColor = (value) => {
+  const setColor = useCallback((value) => {
     console.log('set color mode:', value)
     setCurrentColor(value)
     localStorage.setItem('dashboardColorMode', value)
-  }
+  }, [])
 
-  const toggleState = (clickedItem) => {
-    console.log('clickedItem', clickedItem)
-    console.log('toggleState - initialState1', initialState)
-    // const itemState = initialState.clickedItem // undefined
-    // const itemState = initialState[clickedItem]
-    const itemState = topbarItemsState[clickedItem]
-    // setIsClicked({ ...initialState, [clickedItem]: true }) // !
-    // setIsClicked({ ...initialState, [clickedItem]: true ? false : true })
-    console.log('itemState', itemState)
-    // setIsClicked({ ...initialState, [clickedItem]: true ? false : true })
-    setTopbarItemsState({ ...initialState, [clickedItem]: !itemState })
-    console.log('toggleState - initialState2', initialState)
-    // {
-    //     "isChatOpen": false,
-    //     "isCartOpen": false,
-    //     "isUserProfile": false,
-    //     "isNotification": false
-    // }
-  }
+  const toggleState = useCallback(
+    (clickedItem) => {
+      console.log('1clickedItem', clickedItem)
+      console.log('2toggleState - initialState1', initialState)
+      const itemState = topbarItemsState[clickedItem]
+      console.log('3itemState', itemState)
+      // setIsClicked({ ...initialState, [clickedItem]: true }) // !
+      // setIsClicked({ ...initialState, [clickedItem]: true ? false : true })
+      setTopbarItemsState({ ...initialState, [clickedItem]: !itemState })
+      console.log('4toggleState - initialState2', initialState)
+      // {
+      //     "isChatOpen": false,
+      //     "isCartOpen": false,
+      //     "isUserProfile": false,
+      //     "isNotification": false
+      // }
+    },
+    [topbarItemsState]
+  )
+
+  const values = useMemo(
+    () => ({
+      screenSize,
+      setScreenSize,
+      setColor,
+      setMode,
+      currentMode,
+      currentColor,
+    }),
+    [screenSize, setScreenSize, setColor, setMode, currentMode, currentColor]
+  )
+
+  const topbarValues = useMemo(
+    () => ({
+      topbarItemsState,
+      toggleState,
+    }),
+    [topbarItemsState, toggleState]
+  )
+
+  const sidebarValues = useMemo(
+    () => ({
+      isSidebarOpen,
+      setIsSidebarOpen,
+    }),
+    [isSidebarOpen, setIsSidebarOpen]
+  )
 
   return (
-    <StateContext.Provider
-      value={{
-        isSidebarOpen,
-        setIsSidebarOpen,
-        topbarItemsState,
-        toggleState,
-        screenSize,
-        setScreenSize,
-        setColor,
-        setMode,
-        currentMode,
-        currentColor,
-        themeSettings,
-        setThemeSettings,
-      }}
-    >
-      {children}
+    <StateContext.Provider value={values}>
+      <SidebarContext.Provider value={sidebarValues}>
+        <TopbarContext.Provider value={topbarValues}>{children}</TopbarContext.Provider>
+      </SidebarContext.Provider>
     </StateContext.Provider>
   )
 }
+
 export const useStateContext = () => useContext(StateContext)
+export const useSidebarContext = () => useContext(SidebarContext)
+export const useTopbarContext = () => useContext(TopbarContext)

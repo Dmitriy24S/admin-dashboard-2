@@ -12,6 +12,7 @@ import {
   Resize,
   Sort,
 } from '@syncfusion/ej2-react-grids'
+import React from 'react'
 import { Header } from '../components'
 import { contextMenuItems, ordersData, ordersGrid } from '../data/dummyData'
 
@@ -55,4 +56,5 @@ mt-16 md:mt-10 p-4 md:p-10 bg-white rounded-3xl overflow-auto dark:bg-secondary-
   )
 }
 
+// export default React.memo(Orders)
 export default Orders

@@ -4,12 +4,13 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { SiShopware } from 'react-icons/si'
 import { Link, NavLink } from 'react-router-dom'
 
-import { useStateContext } from '../context/ContextProvider'
+import { useSidebarContext, useStateContext } from '../context/ContextProvider'
 import { links } from '../data/dummyData'
 
 const Sidebar = () => {
-  // const activeMenu = true
-  const { isSidebarOpen, setIsSidebarOpen, screenSize } = useStateContext()
+  console.count('sidebar render')
+  const { screenSize } = useStateContext()
+  const { isSidebarOpen, setIsSidebarOpen } = useSidebarContext()
 
   // If mobile screen -> close sidebar after click on Link
   const handleCloseSideBar = () => {
@@ -77,4 +78,5 @@ const Sidebar = () => {
   )
 }
 
+// export default React.memo(Sidebar)
 export default Sidebar

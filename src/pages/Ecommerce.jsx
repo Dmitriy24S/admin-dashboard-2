@@ -133,4 +133,5 @@ const Ecommerce = () => {
   )
 }
 
+// export default React.memo(Ecommerce)
 export default Ecommerce

@@ -7,7 +7,7 @@ import {
   RichTextEditorComponent,
   Toolbar,
 } from '@syncfusion/ej2-react-richtexteditor'
-
+import React from 'react'
 import { Header } from '../components'
 import { EditorData } from '../data/dummyData'
 
@@ -31,4 +31,5 @@ mt-16 md:mt-10 p-4 md:p-10 bg-white rounded-3xl overflow-auto dark:bg-secondary-
   )
 }
 
+// export default React.memo(Editor)
 export default Editor

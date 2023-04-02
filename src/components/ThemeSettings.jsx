@@ -6,9 +6,8 @@ import { BsCheck } from 'react-icons/bs'
 import { useStateContext } from '../context/ContextProvider'
 import { themeColors } from '../data/dummyData'
 
-const ThemeSettings = () => {
-  const { setColor, setMode, currentMode, currentColor, setThemeSettings } =
-    useStateContext()
+const ThemeSettings = ({ toggleSettingsMenu }) => {
+  const { setColor, setMode, currentMode, currentColor } = useStateContext()
 
   return (
     <div className='bg-half-transparent w-screen absolute bottom-0 nav-item top-0 right-0'>
@@ -18,7 +17,7 @@ const ThemeSettings = () => {
           <button
             type='button'
             aria-label='close theme sidebar'
-            onClick={() => setThemeSettings(false)} // close theme sidebar
+            onClick={toggleSettingsMenu} // close theme sidebar
             className='text-xl p-1.5 text-[#99abb4] hover:bg-light-gray hover:drop-shadow-xl rounded-full dark:hover:bg-main-dark-bg'
           >
             <AiOutlineClose />
@@ -95,4 +94,4 @@ const ThemeSettings = () => {
   )
 }
 
-export default ThemeSettings
+export default React.memo(ThemeSettings)
