@@ -35,10 +35,10 @@ function App() {
         {/* Main */}
         <div
           className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${
-            isSidebarOpen ? 'md:ml-72 ' : 'flex-2'
+            isSidebarOpen ? 'md:ml-72 overflow-hidden' : 'flex-2'
           }`}
         >
-          <div className='fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full'>
+          <div className='fixed md:static z-40 bg-main-bg dark:bg-main-dark-bg navbar w-full'>
             <Topbar />
           </div>
           {/* Theme Settings */}
