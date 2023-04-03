@@ -1,4 +1,4 @@
-import { useStateContext } from '../context/ContextProvider'
+import { useTopbarContext } from '../context/ContextProvider'
 
 const Button = ({
   icon,
@@ -10,14 +10,15 @@ const Button = ({
   borderRadius,
   width,
 }) => {
-  const { setIsClicked, initialState } = useStateContext()
+  const { toggleState, topbarItemsState } = useTopbarContext() // !
 
   return (
     <button
       type='button'
-      onClick={() => setIsClicked(initialState)}
+      onClick={() => toggleState(topbarItemsState)} // !
       style={{ backgroundColor: bgColor, color, borderRadius }}
-      className={` text-${size} p-3 w-${width} hover:drop-shadow-xl hover:bg-${bgHoverColor}`}
+      // className={` text-${size} p-3 w-${width} hover:drop-shadow-xl hover:bg-${bgHoverColor}`}
+      className={` text-${size} p-3 w-${width} hover:drop-shadow-xl hover:bg-light-gray dark:hover:bg-main-dark-bg`}
     >
       {icon} {text}
     </button>

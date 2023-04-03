@@ -67,7 +67,7 @@ const Topbar = () => {
         // dotColor='red'
         icon={<AiOutlineMenu />}
       />
-      <div className='flex'>
+      <div className='flex items-center'>
         <TopbarButton
           title='Cart'
           // customFunc={() => setActiveMenu((prev) => !prev)}
