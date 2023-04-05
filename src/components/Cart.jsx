@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { useStateContext } from '../context/ContextProvider'
 import { cartData } from '../data/dummyData'
@@ -6,6 +6,33 @@ import Button from './Button'
 
 const Cart = () => {
   const { currentColor } = useStateContext()
+  const [data, setData] = useState(cartData)
+
+  const totalValue = data.reduce((total, item) => total + item.price * item.amount, 0)
+
+  const incrementItemAmount = (itemId) => {
+    const updatedCartItems = data.map((item) => {
+      if (item.id === itemId) {
+        item.amount++
+        return item
+      } else {
+        return item
+      }
+    })
+    setData(updatedCartItems)
+  }
+
+  const decrementItemAmount = (itemId) => {
+    const updatedCartItems = data.map((item) => {
+      if (item.id === itemId) {
+        item.amount--
+        return item
+      } else {
+        return item
+      }
+    })
+    setData(updatedCartItems)
+  }
 
   return (
     <div className='bg-half-transparent w-full fixed nav-item top-0 right-0 bottom-0'>
@@ -18,9 +45,9 @@ const Cart = () => {
           <Button icon={<AiOutlineClose />} size='2xp' borderRadius='50%' />
         </div>
         {/* Cart Data */}
-        {cartData?.map((item, index) => (
+        {data?.map((item) => (
           // Item
-          <div key={index} className=''>
+          <div key={item.id} className=''>
             <div className='flex items-center gap-5 p-4 leading-8'>
               <img src={item.image} alt='' className='rounded-lg h-80 w-24' />
               <div>
@@ -37,11 +64,17 @@ const Cart = () => {
                       className='text-red-600 p-2
                     hover:bg-light-gray dark:hover:bg-main-dark-bg rounded-md
                     '
+                      onClick={() => {
+                        if (item.amount > 1) decrementItemAmount(item.id)
+                      }}
                     >
                       <AiOutlineMinus />
                     </button>
-                    <p className='p-2'>1</p>
-                    <button className='text-green-600 p-2 hover:bg-light-gray dark:hover:bg-main-dark-bg rounded-md'>
+                    <p className='p-2'>{item.amount}</p>
+                    <button
+                      className='text-green-600 p-2 hover:bg-light-gray dark:hover:bg-main-dark-bg rounded-md'
+                      onClick={() => incrementItemAmount(item.id)}
+                    >
                       <AiOutlinePlus />
                     </button>
                   </div>
@@ -59,7 +92,8 @@ const Cart = () => {
           </div>
           <div className='flex justify-between items-center mt-3'>
             <p className='text-gray-500 dark:text-gray-200'>Total</p>
-            <p className='font-semibold'>$890</p>
+            {/* <p className='font-semibold'>$890</p> */}
+            <p className='font-semibold'>${totalValue}</p>
           </div>
         </div>
         {/* Order Button */}
