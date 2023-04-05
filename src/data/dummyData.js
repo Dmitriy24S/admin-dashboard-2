@@ -163,10 +163,15 @@ export const barPrimaryXAxis = {
   majorGridLines: { width: 0 },
 }
 export const barPrimaryYAxis = {
-  majorGridLines: { width: 0 },
+  // majorGridLines: { width: 0 },
+  // majorTickLines: { width: 0 },
+  // lineStyle: { width: 0 },
+  // labelStyle: { color: 'transparent' },
+  title: 'Medal Count',
   majorTickLines: { width: 0 },
   lineStyle: { width: 0 },
-  labelStyle: { color: 'transparent' },
+  maximum: 50,
+  interval: 10,
 }
 const areaChartData = [
   [
