@@ -1,5 +1,5 @@
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { BsChatLeft } from 'react-icons/bs'
 import { FiShoppingCart } from 'react-icons/fi'
@@ -13,6 +13,7 @@ import {
   useTopbarContext,
 } from '../context/ContextProvider'
 import avatarImg from '../data/avatar.jpg'
+import useHandleClickOutside from '../hooks/useHandleClickOutside'
 
 const TopbarButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position='BottomCenter' showTipPointer={false}>
@@ -57,8 +58,14 @@ const Topbar = () => {
     }
   }, [screenSize])
 
+  // const topbarRef = useRef(null)
+  const topbarRef = useHandleClickOutside(() => toggleState(topbarItemsState))
+
   return (
-    <div className='flex justify-between p-2 md:mx-6 relative dark:text-gray-200'>
+    <div
+      ref={topbarRef}
+      className='flex justify-between p-2 md:mx-6 relative dark:text-gray-200'
+    >
       <TopbarButton
         title='Menu'
         customFunc={() => setIsSidebarOpen((prev) => !prev)}
