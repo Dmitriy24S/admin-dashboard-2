@@ -13,16 +13,14 @@ import {
   Sort,
 } from '@syncfusion/ej2-react-grids'
 import React from 'react'
-import { Header } from '../components'
+import { PageHeader } from '../components'
+import PageContentWrapper from '../components/Shared/PageContentWrapper'
 import { contextMenuItems, ordersData, ordersGrid } from '../data/dummyData'
 
 const Orders = () => {
   return (
-    <div
-      className='m-10
-mt-16 md:mt-10 p-4 md:p-10 bg-white rounded-3xl overflow-auto dark:bg-secondary-dark-bg'
-    >
-      <Header category='Page' title='Orders' />
+    <PageContentWrapper>
+      <PageHeader category='Page' title='Orders' />
       <GridComponent
         // borderRadius='8px'
         style={{
@@ -52,7 +50,7 @@ mt-16 md:mt-10 p-4 md:p-10 bg-white rounded-3xl overflow-auto dark:bg-secondary-
           ]}
         />
       </GridComponent>
-    </div>
+    </PageContentWrapper>
   )
 }
 

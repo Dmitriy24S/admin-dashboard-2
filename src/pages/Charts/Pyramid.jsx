@@ -10,7 +10,8 @@ import {
   PyramidSeries,
 } from '@syncfusion/ej2-react-charts'
 import React from 'react'
-import { Header } from '../../components'
+import { PageHeader } from '../../components'
+import PageContentWrapper from '../../components/Shared/PageContentWrapper'
 import { useStateContext } from '../../context/ContextProvider'
 import { PyramidData } from '../../data/dummyData'
 
@@ -18,8 +19,8 @@ const Pyramid = () => {
   const { currentMode } = useStateContext()
 
   return (
-    <div className='m-4 md:mt-10 mt-16 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl shadow-md max-w-7xl mx-auto'>
-      <Header category='Pyramid' title='Food Comparison Chart' />
+    <PageContentWrapper>
+      <PageHeader category='Pyramid' title='Food Comparison Chart' />
       <div className='w-full'>
         <AccumulationChartComponent
           id='pyramid-chart'
@@ -72,7 +73,7 @@ const Pyramid = () => {
           </AccumulationSeriesCollectionDirective>
         </AccumulationChartComponent>
       </div>
-    </div>
+    </PageContentWrapper>
   )
 }
 

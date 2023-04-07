@@ -8,7 +8,8 @@ import {
   SplineAreaSeries,
 } from '@syncfusion/ej2-react-charts'
 import React from 'react'
-import { Header } from '../../components'
+import { PageHeader } from '../../components'
+import PageContentWrapper from '../../components/Shared/PageContentWrapper'
 import {
   areaCustomSeries,
   areaPrimaryXAxis,
@@ -20,9 +21,8 @@ const Area = () => {
   // const { currentMode } = useStateContext();
 
   return (
-    // <div className='m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl'>
-    <div className='m-4 md:mt-10 mt-16 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl shadow-md'>
-      <Header category='Area' title='Inflation Rate in percentage' />
+    <PageContentWrapper>
+      <PageHeader category='Area' title='Inflation Rate in percentage' />
       <div className='w-full'>
         <ChartComponent
           id='charts'
@@ -41,7 +41,7 @@ const Area = () => {
           </SeriesCollectionDirective>
         </ChartComponent>
       </div>
-    </div>
+    </PageContentWrapper>
   )
 }
 

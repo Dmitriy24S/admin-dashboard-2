@@ -1,15 +1,15 @@
 import React from 'react'
 
-import { Header, LineChart } from '../../components'
+import { LineChart, PageHeader } from '../../components'
+import PageContentWrapper from '../../components/Shared/PageContentWrapper'
 
 const Line = () => (
-  // <div className='m-10 mt-16 md:mt-10 p-4 md:p-10 bg-white rounded-3xl overflow-auto dark:bg-secondary-dark-bg'>
-  <div className='m-4 md:mt-10 mt-16 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl shadow-md'>
-    <Header category='Line' title='Inflation Rate' />
+  <PageContentWrapper>
+    <PageHeader category='Line' title='Inflation Rate' />
     <div className='w-full'>
       <LineChart />
     </div>
-  </div>
+  </PageContentWrapper>
 )
 
 export default Line

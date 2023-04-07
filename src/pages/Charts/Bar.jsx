@@ -10,13 +10,14 @@ import {
   Tooltip,
 } from '@syncfusion/ej2-react-charts'
 import React from 'react'
-import { Header } from '../../components'
+import { PageHeader } from '../../components'
+import PageContentWrapper from '../../components/Shared/PageContentWrapper'
 import { barCustomSeries, barPrimaryXAxis, barPrimaryYAxis } from '../../data/dummyData'
 
 const Bar = () => {
   return (
-    <div className='m-4 md:mt-10 mt-16 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl shadow-md max-w-7xl mx-auto'>
-      <Header category='Bar' title='Olympic Medal Counts - RIO' />
+    <PageContentWrapper>
+      <PageHeader category='Bar' title='Olympic Medal Counts - RIO' />
       <div className='w-full'>
         <ChartComponent
           id='charts'
@@ -37,7 +38,7 @@ const Bar = () => {
           </SeriesCollectionDirective>
         </ChartComponent>
       </div>
-    </div>
+    </PageContentWrapper>
   )
 }
 

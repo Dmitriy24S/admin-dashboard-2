@@ -11,7 +11,8 @@ import {
   Zoom,
 } from '@syncfusion/ej2-react-charts'
 import React from 'react'
-import { Header } from '../../components'
+import { PageHeader } from '../../components'
+import PageContentWrapper from '../../components/Shared/PageContentWrapper'
 import { useStateContext } from '../../context/ContextProvider'
 import {
   financialChartData,
@@ -32,8 +33,8 @@ const Financial = () => {
   const { currentMode } = useStateContext()
 
   return (
-    <div className='m-4 md:mt-10 mt-16 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl shadow-md max-w-7xl mx-auto'>
-      <Header category='Financial' title='AAPLE Historical' />
+    <PageContentWrapper>
+      <PageHeader category='Financial' title='AAPLE Historical' />
       <div className='w-full'>
         <ChartComponent
           id='charts'
@@ -82,7 +83,7 @@ const Financial = () => {
           </SeriesCollectionDirective>
         </ChartComponent>
       </div>
-    </div>
+    </PageContentWrapper>
   )
 }
 

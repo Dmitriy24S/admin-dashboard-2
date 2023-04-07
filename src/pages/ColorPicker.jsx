@@ -1,6 +1,7 @@
 import { ColorPickerComponent } from '@syncfusion/ej2-react-inputs'
 import React from 'react'
-import { Header } from '../components'
+import { PageHeader } from '../components'
+import PageContentWrapper from '../components/Shared/PageContentWrapper'
 
 const change = (args) => {
   document.getElementById('preview').style.backgroundColor = args.currentValue.hex
@@ -23,13 +24,12 @@ const CustomColorPicker = ({ id, mode }) => (
 
 const ColorPicker = () => {
   return (
-    <div className='m-10 p-10 bg-white rounded-3xl overflow-scroll dark:bg-secondary-dark-bg'>
-      <Header category='App' title='Color Picker' />
+    <PageContentWrapper>
+      <PageHeader category='App' title='Color Picker' />
       <div className='text-center'>
         {}
         <div
-          id='preview'
-          // !
+          id='preview' // !
         />
         <p
           id='value'
@@ -53,7 +53,7 @@ const ColorPicker = () => {
           </div>
         </div>
       </div>
-    </div>
+    </PageContentWrapper>
   )
 }
 

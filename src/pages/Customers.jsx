@@ -16,17 +16,15 @@ import {
   Toolbar,
 } from '@syncfusion/ej2-react-grids'
 import React from 'react'
-import { Header } from '../components'
+import { PageHeader } from '../components'
+import PageContentWrapper from '../components/Shared/PageContentWrapper'
 import { contextMenuItems, customersData, customersGrid } from '../data/dummyData'
 
 // const Customers = React.memo(() => {
 const Customers = () => {
   return (
-    <div
-      className='m-10
-  mt-16 md:mt-10 p-4 md:p-10 bg-white rounded-3xl overflow-auto dark:bg-secondary-dark-bg'
-    >
-      <Header category='Page' title='Customers' />
+    <PageContentWrapper>
+      <PageHeader category='Page' title='Customers' />
       <GridComponent
         dataSource={customersData}
         allowPaging
@@ -37,6 +35,10 @@ const Customers = () => {
           allowDeleting: true,
           allowEditing: true,
         }}
+        style={{
+          borderRadius: '8px',
+          overflow: 'hidden',
+        }}
       >
         <ColumnsDirective>
           {customersGrid.map((item, index) => (
@@ -45,7 +47,7 @@ const Customers = () => {
         </ColumnsDirective>
         <Inject services={[Page, Toolbar, Selection, Edit, Sort, Filter]} />
       </GridComponent>
-    </div>
+    </PageContentWrapper>
   )
 }
 

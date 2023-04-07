@@ -15,16 +15,14 @@ import {
   Toolbar,
 } from '@syncfusion/ej2-react-grids'
 import React from 'react'
-import { Header } from '../components'
+import { PageHeader } from '../components'
+import PageContentWrapper from '../components/Shared/PageContentWrapper'
 import { contextMenuItems, employeesData, employeesGrid } from '../data/dummyData'
 
 const Employees = () => {
   return (
-    <div
-      className='m-10
-  mt-16 md:mt-10 p-4 md:p-10 bg-white rounded-3xl overflow-auto dark:bg-secondary-dark-bg'
-    >
-      <Header category='Page' title='Employees' />
+    <PageContentWrapper>
+      <PageHeader category='Page' title='Employees' />
       <GridComponent
         dataSource={employeesData}
         allowPaging
@@ -44,7 +42,7 @@ const Employees = () => {
         </ColumnsDirective>
         <Inject services={[Page, Search, Toolbar]} />
       </GridComponent>
-    </div>
+    </PageContentWrapper>
   )
 }
 

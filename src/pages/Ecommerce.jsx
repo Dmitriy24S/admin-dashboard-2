@@ -8,12 +8,10 @@ import { earningData, ecomPieChartData, SparklineAreaData } from '../data/dummyD
 
 const Ecommerce = () => {
   return (
-    <div className='mt-12'>
-      {/* <div className='flex flex-wrap lg:flex-nowrap justify-center'> */}
+    <div className='m-4 md:mt-10 mt-16 max-w-7xl mx-auto'>
       <div className='flex flex-wrap justify-center overflow-hidden'>
         {/* HERO */}
-        {/* <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full lg:w-80 p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center'> */}
-        <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full p-8 pt-9 m-3 bg-hero-pattern bg-no-repeat bg-cover bg-center'>
+        <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full p-8 pt-9 my-3 bg-hero-pattern bg-no-repeat bg-cover bg-center'>
           <div className='flex justify-between items-center'>
             <div>
               <p className='font-bold text-gray-400'>Earnings</p>
@@ -32,11 +30,12 @@ const Ecommerce = () => {
         </div>
         {/* CARDS */}
         {/* <div className='flex m-3 flex-wrap justify-center gap-1 items-center'> */}
-        <div className='flex m-3 flex-wrap gap-4 justify-center w-full'>
+        <div className='flex my-3 flex-wrap gap-4 justify-center w-full'>
           {earningData.map((item) => (
             <div
               key={item.title}
-              className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 p-4 pt-9 rounded-2xl min-w-[190px]'
+              className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg md:w-56 p-4 pt-9 rounded-2xl min-w-[190px]
+              flex-1'
             >
               <button
                 type='button'
@@ -60,8 +59,7 @@ const Ecommerce = () => {
         </div>
         {/* CARDS 2 */}
         <div className='flex gap-10 flex-wrap justify-center w-full'>
-          {/* <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-780 m-3 p-4'> */}
-          <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-4 w-full m-3'>
+          <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-4 w-full my-3'>
             <div className='flex justify-between'>
               <p className='font-semibold text-xl'>Revenue Updates</p>
               <div className='flex gap-4 items-center'>
