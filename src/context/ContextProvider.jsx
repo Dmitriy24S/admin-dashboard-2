@@ -45,6 +45,10 @@ export const StateContextProvider = ({ children }) => {
 
   const toggleState = useCallback(
     (clickedItem) => {
+      if (!(clickedItem in topbarItemsState)) {
+        setTopbarItemsState(initialState)
+        return
+      }
       console.log('1clickedItem', clickedItem)
       console.log('2toggleState - initialState1', initialState)
       const itemState = topbarItemsState[clickedItem]
@@ -53,12 +57,6 @@ export const StateContextProvider = ({ children }) => {
       // setIsClicked({ ...initialState, [clickedItem]: true ? false : true })
       setTopbarItemsState({ ...initialState, [clickedItem]: !itemState })
       console.log('4toggleState - initialState2', initialState)
-      // {
-      //     "isChatOpen": false,
-      //     "isCartOpen": false,
-      //     "isUserProfile": false,
-      //     "isNotification": false
-      // }
     },
     [topbarItemsState]
   )

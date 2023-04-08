@@ -59,7 +59,16 @@ const Topbar = () => {
   }, [screenSize])
 
   // const topbarRef = useRef(null)
-  const topbarRef = useHandleClickOutside(() => toggleState(topbarItemsState))
+  const topbarRef = useHandleClickOutside(
+    () =>
+      toggleState({
+        isChatOpen: false,
+        isCartOpen: false,
+        isUserProfileOpen: false,
+        isNotificationOpen: false,
+      }),
+    topbarItemsState
+  )
 
   return (
     <div
