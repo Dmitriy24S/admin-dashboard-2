@@ -9,13 +9,14 @@ const Button = ({
   text,
   borderRadius,
   width,
+  itemName,
 }) => {
-  const { toggleState, topbarItemsState } = useTopbarContext() // !
+  const { toggleState } = useTopbarContext()
 
   return (
     <button
       type='button'
-      onClick={() => toggleState(topbarItemsState)} // !
+      onClick={() => toggleState(itemName)}
       style={{ backgroundColor: bgColor, color, borderRadius }}
       // className={` text-${size} p-3 w-${width} hover:drop-shadow-xl hover:bg-${bgHoverColor}`}
       className={` text-${size} p-3 w-${width} hover:drop-shadow-xl hover:bg-light-gray dark:hover:bg-main-dark-bg`}
