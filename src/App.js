@@ -31,15 +31,7 @@ function App() {
     // <div className={currentMode === 'Dark' ? 'dark' : ''}>
     <div className='flex relative dark:bg-main-dark-bg'>
       {/* Sidebar */}
-      {isSidebarOpen ? (
-        <div className='w-72 fixed z-30 sidebar dark:bg-secondary-dark-bg bg-white'>
-          <Sidebar />
-        </div>
-      ) : (
-        <div className='w-0 dark:bg-secondary-dark-bg'>
-          <Sidebar />
-        </div>
-      )}
+      <Sidebar />
       {/* Main */}
       <div
         className={`dark:bg-main-bg bg-main-bg min-h-screen w-full ${
