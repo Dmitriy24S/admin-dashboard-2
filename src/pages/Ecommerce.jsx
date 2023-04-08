@@ -4,14 +4,14 @@ import { GoPrimitiveDot } from 'react-icons/go'
 
 import { Button, PieChart, SparkLine, StackedChart } from '../components'
 import { useStateContext } from '../context/ContextProvider'
-import { earningData, ecomPieChartData, SparklineAreaData } from '../data/dummyData'
+import { SparklineAreaData, earningData, ecomPieChartData } from '../data/dummyData'
 
 const Ecommerce = () => {
   return (
     <div className='m-4 md:mt-10 mt-16 max-w-7xl mx-auto'>
       <div className='flex flex-wrap justify-center overflow-hidden'>
         {/* HERO */}
-        <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full p-8 pt-9 my-3 bg-hero-pattern bg-no-repeat bg-cover bg-center'>
+        <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 rounded-xl w-full p-8 pt-9 my-3 bg-hero-pattern bg-no-repeat bg-cover bg-center md:bg-[center_30%] md:h-56'>
           <div className='flex justify-between items-center'>
             <div>
               <p className='font-bold text-gray-400'>Earnings</p>
@@ -29,7 +29,6 @@ const Ecommerce = () => {
           </div>
         </div>
         {/* CARDS */}
-        {/* <div className='flex m-3 flex-wrap justify-center gap-1 items-center'> */}
         <div className='flex my-3 flex-wrap gap-4 justify-center w-full'>
           {earningData.map((item) => (
             <div
