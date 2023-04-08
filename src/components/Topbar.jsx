@@ -13,6 +13,7 @@ import {
   useTopbarContext,
 } from '../context/ContextProvider'
 import avatarImg from '../data/avatar.jpg'
+import useDisableBodyScroll from '../hooks/useDisableBodyScroll'
 import useHandleClickOutside from '../hooks/useHandleClickOutside'
 
 const TopbarButton = ({ title, customFunc, icon, color, dotColor }) => (
@@ -69,6 +70,8 @@ const Topbar = () => {
       }),
     topbarItemsState
   )
+
+  useDisableBodyScroll(topbarItemsState.isCartOpen) // Disable body scroll when open cart
 
   return (
     <div
